@@ -4,7 +4,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CyclicBarrier;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
@@ -21,7 +21,7 @@ public class BankWaterService implements Runnable {
 	/**
 	 * 假设只有4个sheet，所以只启动4个线程
 	 */
-	private Executor executor=Executors.newFixedThreadPool(4);
+	private ExecutorService executor=Executors.newFixedThreadPool(4);
 	/**
 	 * 保存每个sheet计算的银行流水结果
 	 */
@@ -55,6 +55,7 @@ public class BankWaterService implements Runnable {
 		//输出结果
 		sheetBankWaterCount.put("result",result);
 		System.out.println("count="+result);
+		executor.shutdown();
 	}
 	public static void main(String []args){
 		BankWaterService bankWaterCount=new BankWaterService();
