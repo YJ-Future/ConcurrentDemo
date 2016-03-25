@@ -1,4 +1,4 @@
-package fkal;
+package fkal.concurrent;
 
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.ExecutorService;
